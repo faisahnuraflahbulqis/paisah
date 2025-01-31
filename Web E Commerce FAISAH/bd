@@ -1,0 +1,35 @@
+create database ti303a;
+use ti303a;
+
+create table pelanggan(
+    kd_1gn varchar (4) primary key, 
+    nama varchar(25),
+    alamat varchar(35),
+    kota varchar(15), telp varchar(13),
+    email varchar(30));
+
+insert into pelanggan value
+    ('1001', 'bacondeng', 'Jl Bung', 'Makassar', '0811','a@a.com'),
+    ('1002', 'bacondeng', 'Jl Bung', 'Makassar', '0811','a@a.com'),
+    ('1003', 'bacondeng', 'J1 Bung', 'Makassar', '0811','a@a.com'),
+
+create table barang(
+    kd_brg varchar (4) primary key,
+    nama varchar(15),
+    stok int,
+    h_beli FLOAT,
+    h_jual FLOAT);
+
+insert into barang value
+    ('b001', 'buku', 100, 130000,150000),
+    ('b002', 'buku', 100, 130000,150000),
+    ('b003', 'buku', 100, 130000,150000),
+
+create table penjualan(
+    nofak varchar(12),
+    tgl_jual date,
+    kd_1gn varchar (4),
+    kd_brg varchar (4),
+    status_jual VARCHAR (7),
+    foreign key (kd_lgn) references pelanggan(kd_lgn)
+     foreign key (kd_brg) references barang(kd_brg));
